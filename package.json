@@ -1,6 +1,6 @@
 {
   "name": "bookjs",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A JavaScript library for easily creating and manipulating book- or magazine-like experiences in a (modern enough) browser.",
   "main": "index.js",
   "scripts": {
