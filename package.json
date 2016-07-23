@@ -1,0 +1,19 @@
+{
+  "name": "bookjs",
+  "version": "0.1.0",
+  "description": "A JavaScript library for easily creating and manipulating book- or magazine-like experiences in a (modern enough) browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agarzola/bookjs"
+  },
+  "author": "Alfonso Gómez-Arzola <alfonso@agarzola.com> (http://agarzola.com/)",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/agarzola/bookjs/issues"
+  },
+  "homepage": "https://github.com/agarzola/bookjs"
+}
