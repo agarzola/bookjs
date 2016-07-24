@@ -5,9 +5,9 @@
   "main": "./dist/book.min.js",
   "scripts": {
     "test": "mocha",
-    "build": "npm run build_styles && npm run build_library",
-    "build_library": "./node_modules/.bin/browserify ./lib/book.js -d -p [./node_modules/minifyify/lib/index.js --map ./dist/book.js.map --output book.js.map] --standalone Book > ./dist/book.min.js",
-    "build_styles": "node ./build_styles.js"
+    "build": "npm run build:styles && npm run build:library",
+    "build:library": "./node_modules/.bin/browserify ./lib/book.js -d -p [./node_modules/minifyify/lib/index.js --map ./dist/book.js.map --output book.js.map] --standalone Book > ./dist/book.min.js",
+    "build:styles": "node ./build_styles.js"
   },
   "repository": {
     "type": "git",
