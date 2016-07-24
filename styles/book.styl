@@ -34,7 +34,12 @@
   background-color transparent
   .fast &
     transition opacity 0.3s ease-in-out 0.2s, height 0.2s ease-in-out, width $fast_page_turn_duration ease-in-out
+  &.book_layout--single
+    width $page_width
+  &.book_layout--spread
+    width $spread_width
   .ready &
     opacity 1
+    height $page_height
   :fullscreen &
     border 0
