@@ -1,0 +1,118 @@
+$book_page
+  display block
+  position absolute
+  top 0
+  bottom 0
+  width auto
+  overflow hidden
+  box-shadow 0 0 20px rgba(0,0,0,0)
+  background-size auto 100%
+  background-repeat no-repeat
+  transition-duration $page_turn_duration, $page_turn_duration, $page_turn_duration, $page_turn_duration, 0.2s
+  transition-property left, right, width, max-width, box-shadow
+  .book_layout--single &
+    max-width 100%
+    max-height 100%
+  .book_layout--spread &
+    max-width 50%
+    max-height 100%
+  &.spread--left
+    background-position right top
+  &.spread--right
+    background-position left top
+  &::after
+    content ''
+    display block
+    padding-top $height
+
+$book_page_displayed
+  @extend $book_page
+  display block
+  z-index 10
+  .book_layout--spread &.spread--left
+    left 0
+    right 50%
+  .book_layout--spread &.spread--right
+    left 50%
+    right 0
+  .book_layout--single &.spread--left,
+  .book_layout--single &.spread--right
+    left 0
+    right 0
+
+$book_page_opening
+  @extend $book_page
+  .book_layout--spread &.spread--left
+    left 0
+    right 50%
+  .book_layout--spread &.spread--right
+    left 50%
+    right 0
+  .book_layout--single &.spread--left,
+  .book_layout--single &.spread--right
+    left 0
+    right 0
+
+$book_page_hidden
+  @extend $book_page
+  z-index 6
+
+.book_page_displayed
+  @extend $book_page_displayed
+
+.book_page_opening--from_left, .book_page_opening--from_right
+  @extend $book_page_opening
+
+.book_page_opening--from_left
+  &.spread--left
+    transition left $page_turn_duration ease-in-out, right $page_turn_duration ease-in-out
+    z-index 9
+    background-position left top
+  &.spread--right
+    transition left $page_turn_duration ease-in-out, right $page_turn_duration ease-in-out
+    z-index 11
+    box-shadow 80px 0 80px -40px rgba(0,0,0,0.2), -120px 0 120px -80px rgba(0,0,0,0.1)
+    background-position right top
+
+.book_page_opening--from_right
+  &.spread--left
+    transition left $page_turn_duration ease-in-out, right $page_turn_duration ease-in-out
+    z-index 11
+    box-shadow -80px 0 80px -40px rgba(0,0,0,0.2), 120px 0 120px -80px rgba(0,0,0,0.1)
+    background-position left top
+  &.spread--right
+    transition left $page_turn_duration ease-in-out, right $page_turn_duration ease-in-out
+    z-index 9
+    background-position right top
+
+.book_page_behind
+  @extend $book_page_displayed
+  z-index 8
+
+.book_page_hidden--left, .book_page_hidden--right
+  @extend $book_page_hidden
+
+.book_page_hidden--left
+  left 0 !important
+  right 100% !important
+  &.spread--left
+    transition-duration 0s
+  &.spread--right
+    transition left $page_turn_duration ease-in-out $page_turn_duration_half, right $page_turn_duration ease-in-out
+
+.book_page_hidden--right
+  left 100% !important
+  right 0 !important
+  &.spread--right
+    transition-duration 0s
+  &.spread--left
+    transition left $page_turn_duration ease-in-out, right $page_turn_duration ease-in-out $page_turn_duration_half
+    background-position right top
+
+.book_page_hidden_immediately--left
+  @extends .book_page_hidden--left
+  transition none !important
+
+.book_page_hidden_immediately--right
+  @extends .book_page_hidden--right
+  transition none !important

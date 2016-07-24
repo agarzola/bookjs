@@ -1,0 +1,52 @@
+.book--nav_buttons
+  hostile_takeover()
+  bottom 100%
+  opacity 0
+  overflow hidden
+  transition-property bottom, opacity
+  .ready &
+    bottom 0
+    opacity 1
+
+.book--nav_buttons--prev,
+.book--nav_buttons--next
+  position absolute
+  top 0
+  bottom 0
+  z-index 100
+  display block
+  width 50%
+  background-color transparent
+  color transparent
+  text-indent -999em
+  border none
+  outline none
+  transition-property bottom
+  transition-duration 0.5s
+  .show_navigator &
+    bottom em(120)
+  &::before
+    content ''
+    display block
+    width em(72)
+    height em(72)
+    position absolute
+    top 50%
+    margin-top em(-72/2)
+    background-image url('/images/booklet/booklet_nav_chevrons@1x.png')
+    background-size em(144) auto
+    background-repeat no-repeat
+
+.book--nav_buttons--prev
+  left 0
+  right 50%
+  &::before
+    left em(12)
+    background-position left top
+
+.book--nav_buttons--next
+  left 50%
+  right 0
+  &::before
+    right em(12)
+    background-position right top

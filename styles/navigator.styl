@@ -1,0 +1,99 @@
+.navigator_button
+  display inline-block
+  padding 0
+  border 2px solid #ccc
+  border-radius 2px
+  background-color $teal_light
+  overflow hidden
+  outline none
+  transition-property border-color, transform
+  img
+    display block
+    float left
+    opacity 0.85
+    max-width em(80)
+    height auto
+    transition-property opacity
+  span
+    display block
+    width 0
+    height 0
+    color transparent
+    text-indent -999em
+  &:focus, &:hover
+    border-color black
+    transform scale(1.1)
+    transform-origin center
+  &.selected
+    border-color $teal_light
+    img
+      opacity 1
+
+.navigator_list
+  position relative
+  z-index 102
+  margin 0 auto
+  padding 0
+  width 100%
+  max-height 0
+  text-align left
+  white-space nowrap
+  opacity 0.2
+  overflow hidden
+  transition-property max-height, padding, opacity
+  transition-duration 0.5s
+  .show_navigator &
+    padding 1em 0
+    max-height em(120)
+    opacity 1
+  ul
+    list-style none
+    display block
+    width auto
+    margin 0
+    padding 0
+    position relative
+    left 4em
+    transition-property left
+
+.navigator_list--item
+  display inline
+  padding 0 0.4em
+  overflow visible
+
+.navigator_list--prev,
+.navigator_list--next
+  display block
+  background-color rgba(0,0,0,0.5)
+  border none
+  color transparent
+  text-indent -999em
+  position absolute
+  top 0
+  bottom 0
+  width 3em
+  outline none
+  z-index 102
+  &::before
+    content ''
+    display block
+    width em(72)
+    height em(72)
+    position absolute
+    top 50%
+    left 50%
+    margin-top em(-72/2)
+    margin-left em(-72/2)
+    background-image url('/images/booklet/booklet_nav_chevrons@1x.png')
+    background-size em(144) auto
+    background-repeat no-repeat
+
+.navigator_list--prev
+  left 0
+  &::before
+    background-position left bottom
+
+.navigator_list--next
+  right 0
+  &::before
+    background-position right bottom
