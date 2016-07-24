@@ -2,9 +2,10 @@
   "name": "bookjs",
   "version": "0.0.1",
   "description": "A JavaScript library for easily creating and manipulating book- or magazine-like experiences in a (modern enough) browser.",
-  "main": "index.js",
+  "main": "./dist/book.min.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "./node_modules/.bin/browserify ./lib/book.js -d -p [./node_modules/minifyify/lib/index.js --map ./dist/book.js.map --output book.js.map] --standalone Book > ./dist/book.min.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/agarzola/bookjs/issues"
   },
-  "homepage": "https://github.com/agarzola/bookjs"
+  "homepage": "https://github.com/agarzola/bookjs",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "minifyify": "^7.3.3"
+  }
 }
