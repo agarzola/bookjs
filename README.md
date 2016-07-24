@@ -18,7 +18,7 @@ var Book = require('bookjs');
 ```
 
 ### … or just link to it.
-When not `require()`ed, _book.js_ attaches its constructor to the global `window` object, so you simply link to it from your HTML document like so:
+When not `require()`ed, _book.js_ attaches its constructor to the global `window` object, so you’ll want to link to `book.min.js` (which you can find in the `dist/` directory at the root of this project).
 
 ```html
   <!-- A bunch of HTML, then, near the bottom of your document: -->
@@ -27,8 +27,6 @@ When not `require()`ed, _book.js_ attaches its constructor to the global `window
 </body>
 </html>
 ```
-
-If you’re not requiring _book.js_, you’ll find `book.min.js` in the `dist/` directory at the root of this project.
 
 ## Using book.js
 Using _book.js_ is relatively straightforward. The library returns a constructor you can invoke to create a new book instance which you can then insert into the DOM and control however you —or your users— see fit (i.e. turn pages or navigate directly to a remote page).
@@ -60,7 +58,7 @@ my_book.markup.appendChild(page_15);
 ```
 
 ### Initialization
-Presuming you’ve required or otherwise included, you can initialize a new book like so:
+Presuming you’ve required or otherwise included _book.js_, you can initialize a new book like so:
 
 ```javascript
 var img_paths = [ /* strings representing paths to page images */ ];
@@ -85,7 +83,7 @@ var some_section = document.getElementById('some_id');
 some_section.parentNode.insertBefore(my_book.markup, some_section);
 ```
 
-Now that `my_book` has been created, we can insert it into our document by referencing `my_book.markup`. You can put it anywhere you like. In the example above, we figure we want to place the bookJS UI just above a section with id `some_id`.
+Now that `my_book` has been created, we can insert it into our document by referencing `my_book.markup`. You can put it anywhere you like. In the example above, I’m inserting the UI provided by _book.js_ just before a section with id `some_id`.
 
 ### Manipulation
 ```javascript
@@ -117,14 +115,12 @@ In our example, we create a button that reads _“Jump to page 15!”_, add an e
 ```javascript
 var img_paths = [ /* strings representing paths to page images */ ];
 var options = {
-  min_load: 5, // default: 3
+  min_load: 5,             // default: 3
   page_turn_duration: 300, // default: 400
-  navigator: true // default: false
+  navigator: true          // default: false
 }
 var my_book = new Book(img_paths, options);
 ```
-
-Options available are as follows:
 
 `min_load` **Integer**  
 _No. of pages the number of pages book.js should wait to finish loading before it’s revealed_
